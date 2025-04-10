@@ -37,7 +37,9 @@ if ingredients_list:
 
     for fruit in ingredients_list:
         st.subheader(f"{fruit} Nutrition Information")
-        sf_df = st.dataframe(frootrequest(fruit), use_container_width=True)
+        sf_fruit = pd_df.loc[pd_df['FRUIT_NAME'] == fruit, 'SEARCH_ON'].iloc[0]
+        st.text(f"We search for {sf_fruit}")
+        sf_df = st.dataframe(frootrequest(sf_fruit), use_container_width=True)
 
     time_to_insert = st.button("Submit Order")
     if time_to_insert:
